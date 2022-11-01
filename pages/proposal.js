@@ -24,6 +24,7 @@ export default function Proposal() {
     .catch(err=>console.error(err))
     }
     if(contStatus != null){
+      alert(contStatus)
       switch(contStatus){
         case 200:
           sendMail(id,"All Good.")
