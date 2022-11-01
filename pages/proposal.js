@@ -19,7 +19,7 @@ export default function Proposal() {
 
   useEffect(()=>{
     if(id != undefined){
-          const contExist = fetch(`http://localhost:3000/api/checkexistence?id=${id}`)
+          const contExist = fetch(`${process.env.BASED_URL}/api/checkexistence?id=${id}`)
     .then(res=>setContStatus(res.status))
     .catch(err=>err)
     }
