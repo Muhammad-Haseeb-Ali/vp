@@ -1,0 +1,12 @@
+.reaction_sec{
+    width: 100%;
+    background-color: #e4ebe4;
+    padding:10px 0;
+    text-align: center;
+}
+.reaction_sec samp{
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
