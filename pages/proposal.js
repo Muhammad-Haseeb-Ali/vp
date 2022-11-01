@@ -14,12 +14,12 @@ export default function Proposal() {
   const [contStatus, setContStatus] = useState(null)
 
   function sendMail(id,msg){
-    fetch(`${process.env.BASED_URL}/api/sendmail?id${id}&msg${msg}`)
+    fetch(`/api/sendmail?id${id}&msg${msg}`)
   }
 
   useEffect(()=>{
     if(id != undefined){
-    fetch(`${process.env.BASED_URL}/api/checkexistence?id=${id}`)
+    fetch(`/api/checkexistence?id=${id}`)
     .then(res=>setContStatus(res.status))
     .catch(err=>console.error(err))
     }
