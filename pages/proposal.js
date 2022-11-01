@@ -14,7 +14,7 @@ export default function Proposal() {
   const [contStatus, setContStatus] = useState(null)
 
   function sendMail(id,msg){
-    fetch(`/api/sendmail?id${id}&msg${msg}`)
+    fetch(`/api/sendmail?id=${id}&msg=${msg}`)
   }
 
   useEffect(()=>{
