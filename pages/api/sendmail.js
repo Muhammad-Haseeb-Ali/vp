@@ -10,7 +10,7 @@ export default function handler(req, res) {
         service: 'gmail',
         auth: {
           user: 'haseeb.aha786@gmail.com',
-          pass: ''
+          pass: `${process.env.MAIL_APP_PASS}`
         }
       });
       

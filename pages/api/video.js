@@ -1,5 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import fs from "fs";
+const decompress = require('decompress');
+ 
 
 const CHUNK_SIZE_IN_BYTES = 1000000; // 1 mb
 
@@ -43,5 +45,19 @@ function getVideoStream(req, res) {
 }
 
 export default function handler(req, res) {
-  return getVideoStream(req, res);
+  const videoId = req.query.id;
+
+  if(!fs.existsSync(`./public/videos/${videoId}.zip`)){
+    return getVideoStream(req, res);
+  }
+  else{
+    decompress(`./public/videos/${videoId}.zip`, './public/videos').then(files => {
+      fs.unlink(`./public/videos/${videoId}.zip`)
+      return getVideoStream(req, res);
+  })
+  .catch(err=>{
+    res.status(400).send(`File cannot be compress due to this ERROR: ${err}`)
+  })
+  }
+
 }
