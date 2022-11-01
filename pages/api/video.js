@@ -13,7 +13,7 @@ function getVideoStream(req, res) {
   const videoId = req.query.id;
   const videoType = req.query.type;
 
-  const videoPath = `./public/videos/${videoType}/${videoId}.mp4`;
+  const videoPath = `./public/videos/${videoId}/${videoType}.mp4`;
 
   const videoSizeInBytes = fs.statSync(videoPath).size;
 
