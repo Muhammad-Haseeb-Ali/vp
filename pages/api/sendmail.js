@@ -16,8 +16,8 @@ export default function handler(req, res) {
       
       var mailOptions = {
         from: 'haseeb.aha786@gmail.com',
-        to: 'haseeb.aha786@outlook.com',
-        subject: `Messsage from ${id} || Video Proposal`,
+        to: 'haseeb.aha786@outlook.com, haseeb.aha786@yahoo.com, haseeb.aha786@aol.com',
+        subject: `Video Proposal Messsage from ${id}`,
         text: `${msg}`
       };
       
