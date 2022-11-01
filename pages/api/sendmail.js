@@ -23,7 +23,7 @@ export default function handler(req, res) {
       
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          console.log(error);
+          res.status(500).send(error)
         } else {
             res.status(200).send(`Thank you for giving your valuable feedback. ${id} ${client} ${reaction} ${feed}`)
         }
