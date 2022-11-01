@@ -47,8 +47,8 @@ export default function Proposal() {
   }
 
 
-  // export const getStaticProps = async (cont) => {
-  //   return{
-  //     props:{}
-  //   }
-  // }
+  export const getStaticProps = async (cont) => {
+    return{
+      props:{}
+    }
+  }
