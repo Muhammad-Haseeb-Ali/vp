@@ -19,16 +19,16 @@ export default function Proposal() {
 
   useEffect(()=>{
     if(id != undefined){
-          const contExist = fetch(`${process.env.BASED_URL}/api/checkexistence?id=${id}`)
+    fetch(`${process.env.BASED_URL}/api/checkexistence?id=${id}`)
     .then(res=>setContStatus(res.status))
-    .catch(err=>err)
+    .catch(err=>console.error(err))
     }
     if(contStatus != null){
       switch(contStatus){
         case 200:
           sendMail(id,"All Good.")
           break;
-        case 402:
+        case 404:
           sendMail(id,"Not Found")
           break;
       }
