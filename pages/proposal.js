@@ -20,20 +20,20 @@ export default function Proposal() {
   useEffect(()=>{
     if(id != undefined){
     fetch(`/api/checkexistence?id=${id}`)
-    .then(res=>setContStatus(res.status))
+    .then(res=>{
+      setContStatus(res.status)
+        switch(res.status){
+          case 200:
+            sendMail(id,"All Good.")
+            break;
+          case 404:
+            sendMail(id,"Not Found")
+            break;
+      }
+    })
     .catch(err=>console.error(err))
     }
-    if(contStatus != null){
-      alert(contStatus)
-      switch(contStatus){
-        case 200:
-          sendMail(id,"All Good.")
-          break;
-        case 404:
-          sendMail(id,"Not Found")
-          break;
-      }
-    }
+
   },[id])
     return (
         <>
