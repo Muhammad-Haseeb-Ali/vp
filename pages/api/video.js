@@ -45,16 +45,16 @@ function getVideoStream(req, res) {
 }
 
 export default function handler(req, res) {
-  const videoId = req.query.id;
+  const {id,type} = req.query;
 
-  if(!fs.existsSync(`./public/videos/${videoId}.zip`)){
+  if(!fs.existsSync(`./public/videos/${type}/${id}.zip`)){
     return getVideoStream(req, res);
   }
   else{
-    decompress(`./public/videos/${videoId}.zip`, './public/videos').then(files => {
-      fs.unlink(`./public/videos/${videoId}.zip`)
-      return getVideoStream(req, res);
-  })
+    decompress(`./public/videos/${type}/${id}.zip`, `./public/videos/${type}`).then(files => {
+      fs.unlink(`./videos/${type}/${id}.zip`,()=>{
+        return getVideoStream(req, res);
+      })  })
   .catch(err=>{
     res.status(400).send(`File cannot be compress due to this ERROR: ${err}`)
   })
