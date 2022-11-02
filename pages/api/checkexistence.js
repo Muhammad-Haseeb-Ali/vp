@@ -1,8 +1,7 @@
-import fs from "fs";
-
+const fs = require('fs')
 export default function handler(req , res){
     const id = req.query.id;
-if (fs.existsSync('/public')) 
+if (fs.existsSync('./public/videos/face/0000.zip')) 
 {
     res.status(200).send("Content exist")
 }
