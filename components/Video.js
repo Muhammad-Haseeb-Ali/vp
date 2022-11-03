@@ -124,7 +124,7 @@ export default function StreamVideo() {
   return (
     <section className={styles.stream_sec}>
       <video
-        src={`${process.env.BASED_URL}/api/video?id=${query.id}&type=screen`}
+        src={`https://vpback.herokuapp.com/video?id=${query.id}&type=screen`}
         width="800px"
         height="auto"
         className={styles.screen_video}
@@ -133,7 +133,7 @@ export default function StreamVideo() {
       />
       <div className={styles.face_container}>
         <video
-          src={`${process.env.BASED_URL}/api/video?id=${query.id}&type=face`}
+          src={`https://vpback.herokuapp.com/video?id=${query.id}&type=screen`}
           width="800px"
           height="auto"
           id="face_video"
