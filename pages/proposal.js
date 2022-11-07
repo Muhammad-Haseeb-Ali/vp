@@ -17,24 +17,6 @@ export default function Proposal() {
     fetch(`https://vpback.herokuapp.com/sendmail?id=${id}&msg=${msg}`)
   }
 
-  // useEffect(()=>{
-  //   if(id != undefined){
-  //   fetch(`/api/checkexistence?id=${id}`)
-  //   .then(res=>{
-  //     setContStatus(res.status)
-  //     //   switch(res.status){
-  //     //     case 200:
-  //     //       sendMail(id,"All Good.")
-  //     //       break;
-  //     //     case 404:
-  //     //       sendMail(id,"Not Found")
-  //     //       break;
-  //     // }
-  //   })
-  //   .catch(err=>console.error(err))
-  //   }
-
-  // },[id])
     return (
         <>
               <Head>
@@ -44,19 +26,6 @@ export default function Proposal() {
       <Navbar/>
       <StreamVideo/>
       <Reaction />
-      {/* {
-        contStatus?
-        contStatus == 200?
-              <>
-              <StreamVideo/>
-              <Reaction />
-              </>
-              :
-              <Notfound/>
-          :
-          <LoadStream/>
-
-      } */}
       <Description client={client? client : ""} />
       <Footer/>
         </>
