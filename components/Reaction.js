@@ -6,7 +6,7 @@ export default function Reaction(){
     const {id} = useRouter().query;
 
  function sendMail(id,msg){
-    fetch(`http://www.vp.up.railway.app/sendmail?id=${id}&msg=${msg}`)
+    fetch(`https://www.vp.up.railway.app/sendmail?id=${id}&msg=${msg}`)
  }
 
     return(
