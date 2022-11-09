@@ -26,7 +26,7 @@ export default function StreamVideo() {
         'video/mp4; codecs="avc1.64001e"'
       );
 
-      axios.get(`https://www.vp.up.railway.app/video`,{
+      axios.get(`https://vpback.netlify.app/video`,{
         params:{
           id,type:"screen"
         },
@@ -50,7 +50,7 @@ export default function StreamVideo() {
           'video/mp4; codecs="avc1.64001e"'
         );
 
-        axios.get(`https://www.vp.up.railway.app/video`,{
+        axios.get(`https://vpback.netlify.app/video`,{
           params:{
             id,type:"face"
           },
