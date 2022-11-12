@@ -200,12 +200,16 @@ export default function StreamVideo() {
   if(router.isReady){
       return (
     <section className={styles.stream_sec}>
+      <div className={styles.thumnail}>
+
+      </div>
       <video
         // src={`https://www.vp.up.railway.app/video?id=${id}&type=screen`}
         width="800px"
         height="auto"
         className={styles.screen_video}
         id="screen_video"
+        poster="/thumnail2.png"
         muted
       />
       <div className={styles.face_container}>

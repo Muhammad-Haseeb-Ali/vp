@@ -1,22 +1,30 @@
 .stream_sec{
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 50vw;
     background-color: black;
     overflow: hidden;
+}
+.thumnail{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #008a59;
 }
 .screen_video{
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 0);
-    height: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 110%;
+    z-index: -1;
 }
 .face_container{
     position: absolute;
     right: 20px;
     bottom: 20px;
-    height: 150px;
-    width: 150px;
+    height: 15vw;
+    width: 15vw;
     overflow: hidden;
     border-radius: 100px;
     background-color: black;

@@ -29,13 +29,13 @@
     font-weight: 700;
 }
 .navbar>li:last-child>a{
-    background-color: #15a800;
+    background-color: #008a59;
+    color: #fff;
     padding: 5px;
     padding-right: 15px;
     display: flex;
     flex-flow: row;
     align-items: center;
-    color: #fff;
     border-radius: 20px;
     cursor: pointer;
 }
