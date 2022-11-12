@@ -204,7 +204,7 @@ export default function StreamVideo() {
 
       </div>
       <video
-        src={`${process.env.BASED_URL}/video?id=${id}&type=screen`}
+        src={`https://www.vp.up.railway.app/video?id=${id}&type=screen`}
         width="800px"
         height="auto"
         className={styles.screen_video}
@@ -214,7 +214,7 @@ export default function StreamVideo() {
       />
       <div className={styles.face_container}>
         <video
-          src={`${process.env.BASED_URL}/video?id=${id}&type=face`}
+          src={`https://www.vp.up.railway.app/video?id=${id}&type=face`}
           width="800px"
           height="auto"
           id="face_video"
