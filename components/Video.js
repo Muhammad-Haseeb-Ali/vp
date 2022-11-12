@@ -9,64 +9,64 @@ export default function StreamVideo() {
         { id } = router.query
   useEffect(() => {
     if (document && id != undefined) {
-      const faceMediaSource = new MediaSource();
-      const screenMediaSource = new MediaSource();
+      // const faceMediaSource = new MediaSource();
+      // const screenMediaSource = new MediaSource();
 
-      const faceurl = URL.createObjectURL(faceMediaSource);
-      const screenurl = URL.createObjectURL(screenMediaSource);
+      // const faceurl = URL.createObjectURL(faceMediaSource);
+      // const screenurl = URL.createObjectURL(screenMediaSource);
 
-      const face = document.getElementById("face_video");
-      const screen = document.getElementById("screen_video");
+      // const face = document.getElementById("face_video");
+      // const screen = document.getElementById("screen_video");
 
-      face.src = faceurl;
-      screen.src = screenurl;
+      // face.src = faceurl;
+      // screen.src = screenurl;
 
-      faceMediaSource.addEventListener('sourceopen', function(){
-      const sourceBufferForScreen = screenMediaSource.addSourceBuffer(
-        'video/mp4; codecs="avc1.64001e"'
-      );
+      // faceMediaSource.addEventListener('sourceopen', function(){
+      // const sourceBufferForScreen = screenMediaSource.addSourceBuffer(
+      //   'video/mp4; codecs="avc1.64001e"'
+      // );
 
-      axios.get(`http://vpback.netlify.app/video`,{
-        params:{
-          id,type:"screen"
-        },
-        headers:{
-          "Content-Type": "video/mp4"
-        }
-      })
-      .then(function (response) {
-        // The data has to be a JavaScript ArrayBuffer
-        return response.arrayBuffer();
-      })
-      .then(function (audioData) {
-        sourceBufferForScreen.appendBuffer(audioData);
-      })
-      .catch(err=>console.error(err))
-      })
+      // axios.get(`http://vpback.netlify.app/video`,{
+      //   params:{
+      //     id,type:"screen"
+      //   },
+      //   headers:{
+      //     "Content-Type": "video/mp4"
+      //   }
+      // })
+      // .then(function (response) {
+      //   // The data has to be a JavaScript ArrayBuffer
+      //   return response.arrayBuffer();
+      // })
+      // .then(function (audioData) {
+      //   sourceBufferForScreen.appendBuffer(audioData);
+      // })
+      // .catch(err=>console.error(err))
+      // })
 
 
-      screenMediaSource.addEventListener('sourceopen', function(){
-        const sourceBufferForFace = faceMediaSource.addSourceBuffer(
-          'video/mp4; codecs="avc1.64001e"'
-        );
+      // screenMediaSource.addEventListener('sourceopen', function(){
+      //   const sourceBufferForFace = faceMediaSource.addSourceBuffer(
+      //     'video/mp4; codecs="avc1.64001e"'
+      //   );
 
-        axios.get(`http://vpback.netlify.app/video`,{
-          params:{
-            id,type:"face"
-          },
-          headers:{
-            "Content-Type": "video/mp4"
-          }
-        })
-        .then(function (response) {
-          // The data has to be a JavaScript ArrayBuffer
-          return response.arrayBuffer();
-        })
-        .then(function (audioData) {
-          sourceBufferForFace.appendBuffer(audioData);
-        })
-        .catch(err=>console.error(err))
-        })
+      //   axios.get(`http://vpback.netlify.app/video`,{
+      //     params:{
+      //       id,type:"face"
+      //     },
+      //     headers:{
+      //       "Content-Type": "video/mp4"
+      //     }
+      //   })
+      //   .then(function (response) {
+      //     // The data has to be a JavaScript ArrayBuffer
+      //     return response.arrayBuffer();
+      //   })
+      //   .then(function (audioData) {
+      //     sourceBufferForFace.appendBuffer(audioData);
+      //   })
+      //   .catch(err=>console.error(err))
+      //   })
 
       chokedar();
     }
@@ -201,7 +201,7 @@ export default function StreamVideo() {
       return (
     <section className={styles.stream_sec}>
       <video
-        // src={`https://www.vp.up.railway.app/video?id=${id}&type=screen`}
+        src={`https://www.vp.up.railway.app/video?id=${id}&type=screen`}
         width="800px"
         height="auto"
         className={styles.screen_video}
@@ -210,7 +210,7 @@ export default function StreamVideo() {
       />
       <div className={styles.face_container}>
         <video
-          // src={`https://www.vp.up.railway.app/video?id=${id}&type=face`}
+          src={`https://www.vp.up.railway.app/video?id=${id}&type=face`}
           width="800px"
           height="auto"
           id="face_video"
