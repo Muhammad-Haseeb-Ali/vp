@@ -16,10 +16,10 @@ export default function Dashboard(){
     }
     return (
         <>
-        <form onSubmit={e=>submitForm(e)} id='form' encType="multipart/form-data">
+        <form id='form' encType="multipart/form-data">
         <label for='file'>Select files</label>
         <input id='file' type="file" />
-        <button className="submit-btn" type='submit'>Upload</button>
+        <button className="submit-btn" type='submit' onClick={e=>submitForm(e)}>Upload</button>
       </form>
       </>
         )

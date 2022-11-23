@@ -7,7 +7,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
     <title>VP by Muhammad H.</title>
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   </Head>
    <Component {...pageProps} />
   </>)
