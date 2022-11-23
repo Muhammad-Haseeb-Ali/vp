@@ -1,7 +1,7 @@
 const multer = require("multer");
 import nextConnect from 'next-connect';
 
-export default function handler (req, res){
+export function handler (req, res){
   console.log(req)
   return(res.status(200).json({"status":"succeed"}))
   

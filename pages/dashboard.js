@@ -1,25 +1,25 @@
+import axios from 'axios';
+
 export default function Dashboard(){
-    function submitForm(e) {
+    function submitForm() {
         const form = document.getElementById("form");
-        e.preventDefault();
         const name = document.getElementById("name");
         const file = document.getElementById("file");
         const formData = new FormData();
         formData.append("file", file.files[0]);
     
-        fetch("api/upload", {
-            method: 'POST',
-            body: formData
-        })
-            .then((res) => console.log(res.json()))
-            .catch((err) => ("Error occured", err));
+        axios.post('upload_file', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+      })
     }
     return (
         <>
         <form id='form' encType="multipart/form-data">
         <label for='file'>Select files</label>
         <input id='file' type="file" />
-        <button className="submit-btn" type='submit' onClick={e=>submitForm(e)}>Upload</button>
+        <button className="submit-btn" type='submit' onClick={submitForm}>Upload</button>
       </form>
       </>
         )
