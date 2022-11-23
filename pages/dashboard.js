@@ -9,7 +9,7 @@ export default function Dashboard(){
         const formData = new FormData();
         formData.append("file", file.files[0]);
     
-        axios.post('upload_file', formData, {
+        axios.post('api/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
