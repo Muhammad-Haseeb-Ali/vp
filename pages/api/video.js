@@ -6,7 +6,7 @@ function getVideoStream(req, res) {
   const range = req.headers.range,
         videoId = req.query.id,
         videoType = req.query.type,
-        videoPath = `../../videos/${videoId}/${videoType}.mp4`;
+        videoPath = `./public/videos/${videoId}/${videoType}.mp4`;
 
 
   if(!fs.existsSync(videoPath)){

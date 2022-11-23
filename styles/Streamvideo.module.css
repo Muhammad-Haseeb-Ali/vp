@@ -17,7 +17,6 @@
     top: 50%;
     transform: translate(-50%, -50%);
     height: 110%;
-    z-index: -1;
 }
 .face_container{
     position: absolute;
