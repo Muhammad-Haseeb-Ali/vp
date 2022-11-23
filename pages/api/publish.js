@@ -2,7 +2,7 @@ const fs = require("fs");
 const decompress = require("decompress");
 
 
- export default function publish(req, res){
+function publish(req, res){
   const id = req.query.id;
   res.setHeader("Content-Type", "application/json");
   if (!fs.existsSync(`./resources/${id}.zip`)) {
@@ -34,3 +34,5 @@ const decompress = require("decompress");
       });
     });
 };
+
+export default handler = publish

@@ -10,4 +10,4 @@ const upload = (req, res, next)=>{
     res.send(file)
 }
 
-module.exports = upload
+export default handler =  upload

@@ -1,19 +1,17 @@
 const nodemailer = require("nodemailer");
 
-
-require('dotenv').config()
-const sendmail = (req, res)=>{
+export default function handler(req, res){
     // sendmail?id="786"&msg="....."
     res.setHeader('Content-Type', 'application/json');
     const {id, msg} = req.query;
-
+    console.log(process.env.MAIL_PASS,id,msg)
     var transporter = nodemailer.createTransport({
         port: 3000, // Postfix uses port 25
         host: 'localhost',
         service: 'gmail',
         auth: {
           user: 'haseeb.aha786@gmail.com',
-          pass: process.env.MAIL_PASS
+          pass: process.env.MAIL_APP_PASS
 
         }
       });
@@ -27,22 +25,28 @@ const sendmail = (req, res)=>{
       
       transporter.sendMail(mailOptions)
       .then(info=>{
-        res.status(200).json({
+        console.log("succed to send mail notification")
+        return(
+                  res.status(200).json({
             status:'success',
             id,
             msg,
             info
         })
+        )
+
     })
       .catch(err=>{
-        res.status(200).json({
+        console.log("error:",err)
+        return(
+               res.status(404).json({
             status:'fail',
             id,
             msg,
             err
-        })
+        })   
+        )
+
     })
 
 }
-
-module.exports = sendmail

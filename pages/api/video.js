@@ -5,16 +5,19 @@ const CHUNK_SIZE_IN_BYTES = 1000000; // 1 mb
 function getVideoStream(req, res) {
   const range = req.headers.range,
         videoId = req.query.id,
-        videoType = req.query.type;
+        videoType = req.query.type,
+        videoPath = `../../videos/${videoId}/${videoType}.mp4`;
 
-  console.log(`Video request is recived with id=${videoId} and type=${videoType}`)
+
+  if(!fs.existsSync(videoPath)){
+    console.log('video is not exist')
+    return res.status(404).send("Video file is not exist");
+  }
 
   if (!range) {
     console.log('range is not define')
     return res.status(400).send("Rang must be provided");
   }
-
-  const videoPath = `./videos/${videoId}/${videoType}.mp4`;
 
   const videoSizeInBytes = fs.statSync(videoPath).size;
 
@@ -44,8 +47,6 @@ function getVideoStream(req, res) {
 }
 
 
-const video = (req, res)=>{
+export default function handler(req, res){
     return getVideoStream(req, res);
 }
-
-module.exports = video

@@ -17,4 +17,4 @@ const unpublish = (req, res)=>{
     }
 }
 
-module.exports = unpublish
+export default handler = unpublish
