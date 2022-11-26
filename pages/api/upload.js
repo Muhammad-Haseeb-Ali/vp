@@ -25,7 +25,7 @@ const saveFile = async (file) => {
       "------------------------------------------------------------------------")
     const data = fs.readFileSync(file.filepath);
     fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
-    await fs.unlinkSync(file.filepath);
+    fs.unlinkSync(file.filepath);
     return true;
   }
   catch { return false }
