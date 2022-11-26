@@ -20,7 +20,7 @@ export default function PrivatePage(props) {
   return (
     <div>
       <div>
-        <h4>Select Image</h4>
+        <h4>Select Zip Folder</h4>
         <input id="file" type="file" name="myImage" />
         <button
           className="btn btn-primary"
