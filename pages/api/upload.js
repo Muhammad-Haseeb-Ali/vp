@@ -3,9 +3,7 @@ import fs from "fs";
 
 export const config = {
   api: {
-    bodyParser: {
-      sizeLimit: '100mb',
-    },
+    bodyParser: false
   }
 };
 
