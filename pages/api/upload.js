@@ -1,6 +1,17 @@
 import formidable from "formidable";
 import fs from "fs";
 
+//       uploadMiddleware = multer({
+//         storage: multer.diskStorage({
+//           destination: function (req, file, cb) {
+//             cb(null, "resources");
+//           },
+//           filename: function (req, file, cb) {
+//             cb(null, file.filename + ".zip");
+//           }
+//         })
+//       }).single("file");
+
 export const config = {
   api: {
     bodyParser: false
@@ -11,6 +22,7 @@ const post = async (req, res) => {
   const form = new formidable.IncomingForm();
   form.parse(req, async function (err, fields, files) {
     const save = await saveFile(files.file);
+    if(err) console.error(err)
     if(!save){
       return res.status(422).json({status:"Your file is not saved successfully!"});
     }
