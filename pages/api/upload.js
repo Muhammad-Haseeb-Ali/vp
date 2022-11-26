@@ -1,42 +1,39 @@
-const multer = require("multer");
-import nextConnect from 'next-connect';
+import formidable from "formidable";
+import fs from "fs";
 
-export default function handler (req, res){
-  console.log(req)
-  return(res.status(200).json({"status":"succeed"}))
-  
-}
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};
 
-// const apiRoute = nextConnect({
-//   onError(error, req, res) {
-//     res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
-//   },
-//   onNoMatch(req, res) {
-//     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
-//   },
-// }),
-//       uploadMiddleware = multer({
-//         storage: multer.diskStorage({
-//           destination: function (req, file, cb) {
-//             cb(null, "resources");
-//           },
-//           filename: function (req, file, cb) {
-//             cb(null, file.filename + ".zip");
-//           }
-//         })
-//       }).single("file");
+const post = async (req, res) => {
+  const form = new formidable.IncomingForm();
+  form.parse(req, async function (err, fields, files) {
+    await saveFile(files.file);
+    return res.status(201).send("");
+  });
+};
 
-// apiRoute.use(uploadMiddleware);
-// apiRoute.post((req, res) => {
-//   res.status(200).json({ data: 'success' });
-// })
+const saveFile = async (file) => {
+  console.warn("-----------------------------------------------------------",
+  file,
+  "------------------------------------------------------------------------")
+  const data = fs.readFileSync(file.filepath);
+  fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
+  await fs.unlinkSync(file.path);
+  return;
+};
 
-
-// export default apiRoute;
-
-// export const config = {
-//   api: {
-//     bodyParser: false, // Disallow body parsing, consume as stream
-//   },
-// };
-
+export default (req, res) => {
+  console.log("Request",req)
+  req.method === "POST"
+    ? post(req, res)
+    : req.method === "PUT"
+    ? console.log("PUT")
+    : req.method === "DELETE"
+    ? console.log("DELETE")
+    : req.method === "GET"
+    ? console.log("GET")
+    : res.status(404).send("");
+};

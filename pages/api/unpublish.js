@@ -1,11 +1,11 @@
 const fs = require('fs')
-const unpublish = (req, res)=>{
+export default function handler(req, res){
     res.setHeader('Content-Type', 'application/json');
     const id = req.query.id,
-    path = `./videos/${id}`;
-    if(fs.existsSync(path)){
-        fs.readdirSync(path).forEach(file => fs.unlinkSync(path + "/" + file));
-        fs.rmdirSync(path);
+    filePath = `./public/videos/${id}`;
+    if(fs.existsSync(filePath)){
+        fs.readdirSync(filePath).forEach(file => fs.unlinkSync(filePath + "/" + file));
+        fs.rmdirSync(filePath);
         res.status(200).json({
             status:"success"
         })       
@@ -16,5 +16,3 @@ const unpublish = (req, res)=>{
         })
     }
 }
-
-export default handler = unpublish
