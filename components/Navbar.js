@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <ul className={styles.navbar}>
       <li>
-        <img src='/favicon.ico' alt="Picture of the author" />
+        <img src='/favicon-32x32.png' alt="Picture of the author" />
         <img src='/me.png' alt="Picture of the author" />
       </li>
       <li>

@@ -20,13 +20,25 @@
     height: 100%;
 }
 .navbar>li:first-child::after{
-    content: "VP by Muhammad H.";
+    content: "Video Proposal";
     width: 300px;
     position: absolute;
-    top: 50%;
+    top: 20%;
     transform: translate( 0, -50%);
     margin-left: 10px;
     font-weight: 700;
+}
+.navbar>li:first-child::before{
+    content: "by Muhammad.";
+    width: 300px;
+    position: absolute;
+    left: 100%;
+    top: 70%;
+    transform: translate( 0, -50%);
+    margin-left: 10px;
+    font-size: 12px;
+    line-height: 12px;
+    float: right;
 }
 .navbar>li:last-child>a{
     background-color: #008a59;
