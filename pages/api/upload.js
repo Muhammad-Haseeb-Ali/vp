@@ -35,12 +35,19 @@ const saveFile = async (file) => {
       "------------------------------------------------------------------------")
     const data = fs.readFileSync(file.filepath);
     fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
-    if(fs.existsSync(`./public/resources/${file.originalFilename}`)){
+
+    fs.access(`./public/resources/${file.originalFilename}`, fs.F_OK, (err) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+    
       fs.unlinkSync(file.filepath);
-      return {status: true , file };
-    }
-    else
-    return {status: false, error: "error occure in file creation face"}
+    })
+
+    if(!fs.existsSync(`./public/resources/${file.originalFilename}`))
+      return {status: false, error: "error occure in file creation face"}
+    else      return {status: true , file };
 
 };
 
