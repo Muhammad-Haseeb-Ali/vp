@@ -38,7 +38,7 @@ const saveFile = async (file) => {
 
     fs.access(`./public/resources/${file.originalFilename}`, fs.F_OK, (err) => {
       if (err) {
-        console.error(err)
+        console.error("||||||||||||||||||||||||||||||||||||||||||||||||",err)
         return
       }
     
