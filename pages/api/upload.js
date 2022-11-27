@@ -1,4 +1,5 @@
 import formidable from "formidable";
+import path from "path";
 import fs from "fs";
 
 const directoryPath = e => path.join(process.cwd(), e),
