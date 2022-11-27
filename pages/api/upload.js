@@ -1,6 +1,9 @@
 import formidable from "formidable";
 import fs from "fs";
 
+const directoryPath = e => path.join(process.cwd(), e),
+      resourcesDir = directoryPath("resources")
+
 //       uploadMiddleware = multer({
 //         storage: multer.diskStorage({
 //           destination: function (req, file, cb) {
@@ -30,29 +33,18 @@ const post = async (req, res) => {
 };
 
 const saveFile = async (file) => {
-    console.log("-----------------------------------------------------------",
-      file,
-      "------------------------------------------------------------------------")
-      fs.access(file.filepath, fs.F_OK, (err) => {
-        console.log(file.filepath)
-        if (err) {
-          console.log("//////////////////////////////////////////////",err)
-        }
-        return
-        })
     const data = fs.readFileSync(file.filepath);
-
-    fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
-    fs.access(`./public/resources/${file.originalFilename}`, fs.F_OK, (err) => {
+    fs.writeFileSync(`${resourcesDir}/${file.originalFilename}`, data);
+    fs.access(`${resourcesDir}/${file.originalFilename}`, fs.F_OK, (err) => {
       if (err) {
         console.log("||||||||||||||||||||||||||||||||||||||||||||||||",err)
         return
       }
-    
       fs.unlinkSync(file.filepath);
+      console.log("temporery stored filr is deleted!")
     })
 
-    if(!fs.existsSync(`./public/resources/${file.originalFilename}`))
+    if(!fs.existsSync(`${resourcesDir}/${file.originalFilename}`))
       return {status: false, error: "error occure in file creation face"}
     else      return {status: true , file };
 
