@@ -23,7 +23,7 @@ const post = async (req, res) => {
   form.parse(req, async function (err, fields, files) {
     const save = await saveFile(files.file);
     if(save.status && save.status == false){
-      return res.status(422).json({ status: false, discription:"Your file is not saved successfully!", error: save.error});
+      return res.status(422).json({ status: false, discription:"Your file is not saved successfully!", error: save.error || "error occure in file creation face"});
     }
     return res.status(201).json({ staus: true, discription:"Your file is saved successfully!"});
   });
@@ -36,8 +36,12 @@ const saveFile = async (file) => {
       "------------------------------------------------------------------------")
     const data = fs.readFileSync(file.filepath);
     fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
-    fs.unlinkSync(file.filepath);
-    return true;
+    if(fs.existsSync(`./public/resources/${file.originalFilename}`)){
+      fs.unlinkSync(file.filepath);
+      return true;
+    }
+    else
+    return {status: false }
   }
   catch(error) { return {status: false, error }}
 
