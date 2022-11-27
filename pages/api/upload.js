@@ -22,7 +22,7 @@ const post = async (req, res) => {
   const form = new formidable.IncomingForm();
   form.parse(req, async function (err, fields, files) {
     const {status, file, error} = await saveFile(files.file);
-    if(save.status && save.status == false){
+    if(status && status == false){
       return res.status(422).json({ status, discription:"Your file is not saved successfully!", error});
     }
     return res.status(201).json({ status, discription:"Your file is saved successfully!"});
