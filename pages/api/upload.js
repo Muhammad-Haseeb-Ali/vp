@@ -36,6 +36,14 @@ const saveFile = async (file) => {
     const data = fs.readFileSync(file.filepath);
     fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
 
+    fs.access(file.filepath, fs.F_OK, (err) => {
+      console.log(file.filepath)
+      if (err) {
+        console.error("//////////////////////////////////////////////",err)
+        return
+      }
+      })
+
     fs.access(`./public/resources/${file.originalFilename}`, fs.F_OK, (err) => {
       if (err) {
         console.error("||||||||||||||||||||||||||||||||||||||||||||||||",err)
