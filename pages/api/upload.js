@@ -30,23 +30,22 @@ const post = async (req, res) => {
 };
 
 const saveFile = async (file) => {
-    console.warn("-----------------------------------------------------------",
+    console.log("-----------------------------------------------------------",
       file,
       "------------------------------------------------------------------------")
-    const data = fs.readFileSync(file.filepath);
-    fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
-
-    fs.access(file.filepath, fs.F_OK, (err) => {
-      console.log(file.filepath)
-      if (err) {
-        console.error("//////////////////////////////////////////////",err)
+      fs.access(file.filepath, fs.F_OK, (err) => {
+        console.log(file.filepath)
+        if (err) {
+          console.log("//////////////////////////////////////////////",err)
+        }
         return
-      }
-      })
+        })
+    const data = fs.readFileSync(file.filepath);
 
+    fs.writeFileSync(`./public/resources/${file.originalFilename}`, data);
     fs.access(`./public/resources/${file.originalFilename}`, fs.F_OK, (err) => {
       if (err) {
-        console.error("||||||||||||||||||||||||||||||||||||||||||||||||",err)
+        console.log("||||||||||||||||||||||||||||||||||||||||||||||||",err)
         return
       }
     
