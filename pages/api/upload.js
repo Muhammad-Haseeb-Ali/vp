@@ -22,33 +22,20 @@ export const config = {
   }
 };
 
-const post = async (req, res) => {
+const post = (req, res) => {
   const form = new formidable.IncomingForm();
-  form.parse(req, async function (err, fields, files) {
-    const {status, file, error} = await saveFile(files.file);
-    if(!status){
-      return res.status(422).json({ status, discription:"Your file is not saved successfully!", error});
-    }
-    return res.status(201).json({ status, discription:"Your file is saved successfully!",file});
-  });
-};
-
-const saveFile = async (file) => {
-    const data = fs.readFileSync(file.filepath);
-    fs.writeFileSync(`${resourcesDir}/${file.originalFilename}`, data);
-    fs.access(`${resourcesDir}/${file.originalFilename}`, fs.F_OK, (err) => {
-      if (err) {
-        console.log("||||||||||||||||||||||||||||||||||||||||||||||||",err)
-        return
-      }
-      fs.unlinkSync(file.filepath);
+  form.parse(req,(err, fields, files) => {
+    console.log(files)
+    const data = fs.readFileSync(files.file.filepath);
+    fs.writeFileSync(`${resourcesDir}/${files.file.originalFilename}`, data);
+    if(!fs.existsSync(`${resourcesDir}/${files.file.originalFilename}`) && fs.existsSync(files.file.filepath))
+    {
+      fs.unlinkSync(files.file.filepath);
       console.log("temporery stored filr is deleted!")
-    })
-
-    if(!fs.existsSync(`${resourcesDir}/${file.originalFilename}`))
-      return {status: false, error: "error occure in file creation face"}
-    else      return {status: true , file };
-
+            return res.status(404).json({status: false, error: "error occure in file creation face"})
+    }
+     res.status(200).json({status: true , files });
+  });
 };
 
 export default (req, res) => {
