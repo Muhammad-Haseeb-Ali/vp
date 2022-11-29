@@ -1,6 +1,6 @@
 import formidable from "formidable";
-import path from "path";
 import fs from "fs";
+import path from "path";
 
 const directoryPath = e => path.join(process.cwd(), e),
       resourcesDir = directoryPath("resources")

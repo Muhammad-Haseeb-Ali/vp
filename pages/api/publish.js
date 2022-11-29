@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path")
 const decompress = require("decompress");
 
 const fileExistsSync = (file) => {
@@ -14,14 +15,20 @@ const fileExistsSync = (file) => {
 export default function handler(req, res){
   const id = req.query.id;
   console.log(id)
+  const directoryPath = e => path.join(process.cwd(), e),
+      resourcesDir = directoryPath("resources"),
+      videosDir = directoryPath("videos")
+      if (!fs.existsSync(resourcesDir)){
+        fs.mkdirSync(resourcesDir);
+      }
   res.setHeader("Content-Type", "application/json");
-  if (!fileExistsSync(`./public/resources/${id}.zip`)) {
+  if (!fileExistsSync(`${resourcesDir}/${id}.zip`)) {
     return res.status(400).json({
       status: "not found",
       info: `${id} Proposal is not uploaded on server yet`,
     });
   }
-  decompress(`./public/resources/${id}.zip`, `./public/videos/`)
+  decompress(`${resourcesDir}/${id}.zip`, videosDir + "/" + id)
     .then(files => {
       console.log(files)
       res.status(200).json({
@@ -31,7 +38,7 @@ export default function handler(req, res){
     })
     .catch((err) => {
       console.log(err);
-      const path = `./public/videos/${id}`;
+      const path = `${videosDir}/${id}`;
       if(fs.existsSync(path)){
       fs.readdirSync(path).forEach((file) => fs.unlinkSync(path + "/" + file));
       fs.rmdirSync(path);
