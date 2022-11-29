@@ -23,6 +23,7 @@ export const config = {
 };
 
 const post = (req, res) => {
+  console.log(req)
   const form = new formidable.IncomingForm({maxFileSize: 1000 * 1024 * 1024});
   form.parse(req,(err, fields, files) => {
     console.log("----------------------------",form._parser.globalOptions.maxFileSize)
