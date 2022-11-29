@@ -23,9 +23,9 @@ export const config = {
 };
 
 const post = (req, res) => {
-  const form = new formidable.IncomingForm();
+  const form = new formidable.IncomingForm({maxFileSize: 1000 * 1024 * 1024});
   form.parse(req,(err, fields, files) => {
-    console.log(files)
+    console.log("----------------------------",form._parser.globalOptions.maxFileSize)
     const data = fs.readFileSync(files.file.filepath);
     if (!fs.existsSync(resourcesDir)){
       fs.mkdirSync(resourcesDir);
