@@ -27,6 +27,9 @@ const post = (req, res) => {
   form.parse(req,(err, fields, files) => {
     console.log(files)
     const data = fs.readFileSync(files.file.filepath);
+    if (!fs.existsSync(resourcesDir)){
+      fs.mkdirSync(resourcesDir);
+    }
     fs.writeFileSync(`${resourcesDir}/${files.file.originalFilename}`, data);
     if(!fs.existsSync(`${resourcesDir}/${files.file.originalFilename}`) && fs.existsSync(files.file.filepath))
     {
@@ -42,11 +45,7 @@ export default (req, res) => {
   console.log("Request", req)
   req.method === "POST"
     ? post(req, res)
-    : req.method === "PUT"
-      ? console.log("PUT")
-      : req.method === "DELETE"
-        ? console.log("DELETE")
-        : req.method === "GET"
-          ? console.log("GET")
-          : res.status(404).send("");
+    : (req,res) => {
+      res.status(403).json({status: false , discription: "This method is not allowed." });
+    }
 };
