@@ -14,7 +14,8 @@ export default function PrivatePage(props) {
     const response = await fetch("/api/upload", {
       method: "POST",
       body
-    });
+    })
+    console.log(response)
   };
 
   return (
