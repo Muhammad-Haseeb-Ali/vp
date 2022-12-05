@@ -2,8 +2,8 @@ import formidable from "formidable";
 import fs from "fs";
 import path from "path";
 
-const directoryPath = e => path.join(process.cwd(), e),
-      resourcesDir = directoryPath("resources")
+const directoryPath = e => path.join("/tmp", e),
+      resourcesDir = directoryPath("/resources")
 
 //       uploadMiddleware = multer({
 //         storage: multer.diskStorage({
