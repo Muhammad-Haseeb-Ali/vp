@@ -46,7 +46,11 @@ const post = (req, res) => {
 };
 
 export default function handler(req, res){
-  console.log("Request", req)
-      return (res.status(403).json({status: false , discription: "This method is not allowed." }))
+  if(req.method !== 'POST')
+  {
+    return res.status(403).json({status: false , discription: "This method is not allowed." })
+  }
+
+  post(req, res)
 
 };
