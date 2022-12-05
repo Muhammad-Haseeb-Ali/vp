@@ -31,17 +31,18 @@ const post = (req, res) => {
     }
     console.log("----------------------------",form._parser.globalOptions.maxFileSize)
     const data = fs.readFileSync(files.file.filepath);
-    if (!fs.existsSync(resourcesDir)){
-      fs.mkdirSync(resourcesDir);
-    }
-    fs.writeFileSync(`${resourcesDir}/${files.file.originalFilename}`, data);
-    if(!fs.existsSync(`${resourcesDir}/${files.file.originalFilename}`) && fs.existsSync(files.file.filepath))
-    {
-      fs.unlinkSync(files.file.filepath);
-      console.log("temporery stored filr is deleted!")
-            return res.status(404).json({status: false, error: "error occure in file creation face"})
-    }
-     res.status(200).json({status: true , files });
+    // comment for removing fs functionalities
+    // if (!fs.existsSync(resourcesDir)){
+    //   fs.mkdirSync(resourcesDir);
+    // }
+    // fs.writeFileSync(`${resourcesDir}/${files.file.originalFilename}`, data);
+    // if(!fs.existsSync(`${resourcesDir}/${files.file.originalFilename}`) && fs.existsSync(files.file.filepath))
+    // {
+    //   fs.unlinkSync(files.file.filepath);
+    //   console.log("temporery stored filr is deleted!")
+    //         return res.status(404).json({status: false, error: "error occure in file creation face"})
+    // }
+     res.status(200).json({status: true, path: files.file.filepath });
   });
 };
 
