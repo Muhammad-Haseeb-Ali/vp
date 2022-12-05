@@ -52,7 +52,7 @@ export default function handler(req, res){
     return res.status(403).json({status: false , discription: "This method is not allowed." })
   }
 
-  res.status(200).json({status: true, path: files.file.filepath });
+  res.status(200).json({status: true });
 
   // const form = new formidable.IncomingForm();
   // form.parse(req,(err, fields, files) => {
