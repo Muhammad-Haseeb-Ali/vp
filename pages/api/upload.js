@@ -48,7 +48,7 @@ const post = (req, res) => {
 export default (req, res) => {
   console.log("Request", req)
   req.method === "POST"
-    ? (req, res) => res.status(200).json({"OK":"I'm reaching herre"})
+    ? post(req, res)
     : (req,res) => {
       res.status(403).json({status: false , discription: "This method is not allowed." });
     }

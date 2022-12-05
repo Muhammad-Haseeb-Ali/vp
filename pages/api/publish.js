@@ -16,8 +16,8 @@ export default function handler(req, res){
   const id = req.query.id;
   console.log(id)
   const directoryPath = e => path.join(process.cwd(), e),
-      resourcesDir = directoryPath("resources"),
-      videosDir = directoryPath("videos")
+      resourcesDir = directoryPath("/tmp/resources"),
+      videosDir = directoryPath("/tmp/videos")
       if (!fs.existsSync(resourcesDir)){
         fs.mkdirSync(resourcesDir);
       }
