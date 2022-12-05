@@ -26,6 +26,9 @@ const post = (req, res) => {
   console.log(req)
   const form = new formidable.IncomingForm();
   form.parse(req,(err, fields, files) => {
+    if(err){
+      return res.status(404).json({status: false, error: "Error: Request is not parsed correctly"})
+    }
     console.log("----------------------------",form._parser.globalOptions.maxFileSize)
     const data = fs.readFileSync(files.file.filepath);
     if (!fs.existsSync(resourcesDir)){
