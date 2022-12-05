@@ -15,9 +15,9 @@ const fileExistsSync = (file) => {
 export default function handler(req, res){
   const id = req.query.id;
   console.log(id)
-  const directoryPath = e => path.join("/tmp", e),
-      resourcesDir = directoryPath("/resources"),
-      videosDir = directoryPath("/videos")
+  const directoryPath = e => path.join(process.cwd(), e),
+      resourcesDir = directoryPath("/public/resources"),
+      videosDir = directoryPath("/public/videos")
       if (!fs.existsSync(resourcesDir)){
         fs.mkdirSync(resourcesDir);
       }
