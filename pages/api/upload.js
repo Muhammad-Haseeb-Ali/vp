@@ -2,7 +2,7 @@ import formidable from "formidable";
 import fs from "fs";
 import path from "path";
 
-const directoryPath = e => path.join("/tmp", e),
+const directoryPath = e => path.join(process.cwd(),"/tmp", e),
       resourcesDir = directoryPath("/resources")
 
 //       uploadMiddleware = multer({
@@ -32,6 +32,7 @@ const post = (req, res) => {
     console.log("----------------------------",form._parser.globalOptions.maxFileSize)
     const data = fs.readFileSync(files.file.filepath);
     if (!fs.existsSync(resourcesDir)){
+      console.log(`|||||||Error: ENOENT: no such file or directory, mkdir ${resourcesDir}`)
       fs.mkdirSync(resourcesDir);
     }
     fs.writeFileSync(`${resourcesDir}/${files.file.originalFilename}`, data);
