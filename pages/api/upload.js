@@ -45,7 +45,7 @@ const post = (req, res) => {
   });
 };
 
-export default (req, res) => {
+export default function handler(req, res){
   console.log("Request", req)
   req.method === "POST"
     ? post(req, res)
