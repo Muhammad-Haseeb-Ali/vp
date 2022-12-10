@@ -18,9 +18,11 @@ const directoryPath = e => path.join(process.cwd(), e),
 
 export const config = {
   api: {
-    bodyParser: false
+      bodyParser: {
+          sizeLimit: '50mb' // Set desired value here
+      }
   }
-};
+}
 
 export default function handler(req, res){
   if(req.method !== 'POST')
