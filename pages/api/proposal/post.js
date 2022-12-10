@@ -32,7 +32,7 @@ export default function handler(req, res){
         
         console.log(`Proposal API is called with following queries id:${id} and client:${JSON.stringify(client)}`)
         connect().catch(error => console.log(error))
-        const proposal = new Proposal({id,client,published: JSON.parse(published)})
+        const proposal = new Proposal({id,client,published: published? JSON.parse(published) : true})
         proposal.save()
         .then(()=>{
             res.status(200).json(proposal)
