@@ -14,7 +14,6 @@ export default function handler(req, res){
   if(req.method === 'POST')
   {
     console.log(req.method)
-    const {id, client} = req.query;
     const form = new formidable.IncomingForm();
     form.parse(req,(err, fields, files) => {
       if(err && !files.file){
@@ -23,7 +22,7 @@ export default function handler(req, res){
       console.log("----------------------------",form._parser.globalOptions.maxFileSize)
       console.log(files, fields);
 
-      const {client} = fields,
+      const {client,published} = fields,
             id = Math.random().toString(36).substring(2) +
             (new Date()).getTime().toString(36);
 
@@ -33,7 +32,7 @@ export default function handler(req, res){
         
         console.log(`Proposal API is called with following queries id:${id} and client:${JSON.stringify(client)}`)
         connect().catch(error => console.log(error))
-        const proposal = new Proposal({id,client})
+        const proposal = new Proposal({id,client,published: JSON.parse(published)})
         proposal.save()
         .then(()=>{
             res.status(200).json(proposal)
@@ -49,7 +48,7 @@ export default function handler(req, res){
   
         res.status(400).json({
           status: "fail",
-          info: `${id} cannot be compress and Published due to this ERROR: ${err}`,
+          info: `${id} cannot be compress and Published`,
           err,
         });
       });

@@ -29,6 +29,12 @@ export default function PrivatePage(props) {
         <label for="zipFile">File: </label>
         <input id="file" type="file" name="zipFile" max="1" required />
         <br/>
+        <label for="publish">Published: </label>
+        <input id="publishBTN" type="radio" name="published" value="true" />
+        Publish
+        <input id="unpublishBTN" type="radio" name="published" value="false"/>
+        non Publish <br/>
+        <br/>
         <button
           className="btn btn-primary"
           type="submit"

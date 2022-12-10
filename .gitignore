@@ -36,5 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Self files and folders
-/videos
-/resources
+/public/videos
+/public/resources
