@@ -12,7 +12,7 @@ export default function PrivatePage(props) {
     const form = document.getElementById("proposalForm");
     const body = new FormData(form);
     console.error(body,[...body.entries()]);
-    const response = await fetch("/api/proposal/post", {
+    const response = await fetch("/api/upload", {
       method: "POST",
       body
     })
