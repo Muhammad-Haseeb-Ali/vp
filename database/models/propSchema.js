@@ -7,6 +7,6 @@ const propSchema = new mongoose.Schema({
         default: 'you'
     }
 })
-    const Proposal =  mongoose.model('Proposal', propSchema)
+    const Proposal = mongoose.model('Proposal') ||  mongoose.model('Proposal', propSchema)
 
 export default Proposal;

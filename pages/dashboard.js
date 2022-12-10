@@ -8,10 +8,11 @@ import { useState } from "react";
 export default function PrivatePage(props) {
 
   const uploadToServer = async (event) => {
-    const file = document.getElementById("file");
-    const body = new FormData();
-    body.append("file", file.files[0]);
-    const response = await fetch("/api/upload", {
+    event.preventDefault();
+    const form = document.getElementById("proposalForm");
+    const body = new FormData(form);
+    console.error(body,[...body.entries()]);
+    const response = await fetch("/api/proposal/post", {
       method: "POST",
       body
     })
@@ -20,17 +21,22 @@ export default function PrivatePage(props) {
 
   return (
     <div>
-      <div>
-        <h4>Select Zip Folder</h4>
-        <input id="file" type="file" name="myImage" />
+      <form id="proposalForm">
+        <h4>Create Proposal</h4>
+        <label for="client">Client: </label>
+        <input type="text" name="client" id="client"/>
+        <br/>
+        <label for="zipFile">File: </label>
+        <input id="file" type="file" name="zipFile" max="1" required />
+        <br/>
         <button
           className="btn btn-primary"
           type="submit"
           onClick={uploadToServer}
         >
-          Send to server
+          Create
         </button>
-      </div>
+      </form>
     </div>
   );
 }
