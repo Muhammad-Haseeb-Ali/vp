@@ -29,7 +29,10 @@ export default function handler(req, res){
     return res.status(403).json({status: false , discription: "This method is not allowed." })
   }
 
-  const form = new formidable.IncomingForm();
+  const form = new formidable.IncomingForm({
+    maxFileSize: 1 * 1024 * 1024,
+    keepExtensions: true
+  });
   form.parse(req,(err, fields, files) => {
     if(err){
       return res.status(404).json({status: false, error: "Error: Request is not parsed correctly"})
