@@ -6,12 +6,16 @@ const propSchema = new mongoose.Schema({
         type:String,
         default: 'you'
     },
-    published:{
+    discription:{
+        type:String,
+        require:true
+    },
+    publish:{
         type: Boolean,
         default: true,
         require: true
     }
 })
-    const Proposal = mongoose.model('Proposal') ||  mongoose.model('Proposal', propSchema)
+    const Proposal =  mongoose.model('Proposal', propSchema)
 
 export default Proposal;
