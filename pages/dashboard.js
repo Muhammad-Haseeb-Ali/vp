@@ -11,17 +11,16 @@ export default function PrivatePage(props) {
     event.preventDefault();
     const form = document.getElementById("proposalForm");
     const body = new FormData(form);
-    console.error(body,[...body.entries()]);
-    const response = await fetch("/api/proposal/post", {
+    console.error([...body.entries()]);
+    fetch("https://backofvp.vercel.app/proposal", {mode: 'no-cors'}, {
       method: "POST",
       body
     })
-    console.log(response)
   };
 
   return (
     <div>
-      <form id="proposalForm" action="/api/proposal/post" method="post">
+      <form id="proposalForm">
         <h4>Create Proposal</h4>
         <label for="client">Client: </label>
         <br/>  
@@ -35,10 +34,9 @@ export default function PrivatePage(props) {
         <br/>  
         <textarea name="discription" id="discription" rows="10" cols="50" maxlength="300"/>
         <br/>  
-        {/* Disable file uploading code */}
-        {/* <label for="zipFile">File: </label>
+        <label for="zipFile">File: </label>
         <input id="file" type="file" name="zipFile" max="1" required />
-        <br/> */}
+        <br/>
         <label for="publish">Publish: </label>
         <br/>  
         <input id="publishBTN" type="radio" name="publish" value="true" />
@@ -49,6 +47,7 @@ export default function PrivatePage(props) {
         <button
           className="btn btn-primary"
           type="submit"
+          onClick={uploadToServer}
         >
           Create
         </button>
