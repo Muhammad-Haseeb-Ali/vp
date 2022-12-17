@@ -12,8 +12,9 @@ export default function PrivatePage(props) {
     const form = document.getElementById("proposalForm");
     const body = new FormData(form);
     console.error([...body.entries()]);
-    fetch("https://backofvp.vercel.app/proposal", {mode: 'no-cors'}, {
+    fetch("https://backofvp.vercel.app/proposal", {
       method: "POST",
+      mode: 'no-cors',
       body
     })
   };
