@@ -12,7 +12,7 @@ export default function PrivatePage(props) {
     const form = document.getElementById("proposalForm");
     const body = new FormData(form);
     console.error([...body.entries()]);
-    fetch("https://backofvp.vercel.app/proposal", {
+    fetch("https://backofvp.up.railway.app/proposal", {
       method: "POST",
       mode: 'no-cors',
       body
@@ -21,7 +21,7 @@ export default function PrivatePage(props) {
 
   return (
     <div>
-      <form id="proposalForm" action="https://backofvp.vercel.app/proposal" method="post" enctype="multipart/form-data">
+      <form id="proposalForm" action="https://backofvp.up.railway.app/proposal" method="post" enctype="multipart/form-data">
         <h4>Create Proposal</h4>
         <label for="client">Client: </label>
         <br/>  
