@@ -12,7 +12,7 @@ export default function PrivatePage(props) {
     const form = document.getElementById("proposalForm");
     const body = new FormData(form);
     console.error([...body.entries()]);
-    fetch("https://backofvp.up.railway.app/proposal", {
+    fetch("https://backofvp.up.railway.app/proposal/" + body.entries()[1][1], {
       method: "POST",
       mode: 'no-cors',
       body
