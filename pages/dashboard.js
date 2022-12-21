@@ -35,8 +35,11 @@ export default function PrivatePage(props) {
         <br/>  
         <textarea name="discription" id="discription" rows="10" cols="50" maxlength="300"/>
         <br/>
-        <label for="videos">Videos: </label>
-        <input id="file" type="file" name="videos" multiple="multiple" required />
+        <label for="face">Face: </label>
+        <input id="file" type="file" name="face" required />
+        <br/>
+        <label for="screen">Screen: </label>
+        <input id="file" type="file" name="screen" required />
         <br/>
         <label for="publish">Publish: </label>
         <br/>  
