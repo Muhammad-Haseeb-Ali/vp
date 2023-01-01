@@ -42,12 +42,12 @@ export default function PrivatePage(props) {
     <div>
       <Video/>
       <form id="faceForm">
-        <label for="face">Face: </label>
-        <input id="file" type="file" name="face" required />
+        <label for="video">Face: </label>
+        <input id="face_video" type="file" name="video" required />
       </form>
       <form id="screenForm">
-        <label for="screen">Screen: </label>
-        <input id="file" type="file" name="screen" required />
+        <label for="video">Screen: </label>
+        <input id="screen_video" type="file" name="video" required />
       </form>
       <form id="proposalForm">
         <h4>Create Proposal</h4>
