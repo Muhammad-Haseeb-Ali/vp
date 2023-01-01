@@ -214,7 +214,7 @@ export default function StreamVideo() {
       />
       <div className={styles.face_container}>
         <video
-          src={`https://backofvp.up.railway.app/proposal/${id}/video/screen`}
+          src={`https://backofvp.up.railway.app/proposal/${id}/video/face`}
           width="800px"
           height="auto"
           id="face_video"
