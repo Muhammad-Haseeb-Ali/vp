@@ -19,23 +19,30 @@ export default function PrivatePage(props) {
 
     // https://backofvp.up.railway.app
     // http://localhost
-    fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id'), {
+    
+      fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id'), {
       method: "POST",
       mode: 'no-cors',
       body: dataBody
     })
-
-    fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/face", {
+    .then(
+      fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/face", {
       method: "POST",
       mode: 'no-cors',
       body: faceBody
     })
-    
-    fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/screen", {
+    .then(
+      fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/screen", {
       method: "POST",
       mode: 'no-cors',
       body: screenBody
-    })
+    })  
+    )
+    )
+
+
+    
+
   };
 
   return (
