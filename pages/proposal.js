@@ -25,9 +25,9 @@ export default function Proposal() {
       </Head>
       <Navbar/>
       <video
-        src={`https://backofvp.up.railway.app/proposal/${id}/video/screen`}/>
+        src={`https://backofvp.up.railway.app/proposal/${id}/video/screen`}  width="320" height="240" controls/>
       <video
-        src={`https://backofvp.up.railway.app/proposal/${id}/video/face`}/>
+        src={`https://backofvp.up.railway.app/proposal/${id}/video/face`}  width="320" height="240" controls/>
       <Reaction />
       <Description client={client? client : ""} />
       <Footer/>
