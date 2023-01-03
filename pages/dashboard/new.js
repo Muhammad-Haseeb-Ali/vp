@@ -32,13 +32,13 @@ export default function PrivatePage(props) {
       body: dataBody
     })
 
-      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/face", {
+      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first", {
       method: "POST",
       mode: 'no-cors',
       body: faceBody
     })
 
-      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/screen", {
+      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first", {
       method: "POST",
       mode: 'no-cors',
       body: screenBody
