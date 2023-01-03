@@ -24,10 +24,7 @@ export default function Proposal() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Navbar/>
-      <video
-        src={`https://backofvp.up.railway.app/proposal/${id}/video/screen`}  width="320" height="240" controls/>
-      <video
-        src={`https://backofvp.up.railway.app/proposal/${id}/video/face`}  width="320" height="240" controls/>
+      <StreamVideo/>
       <Reaction />
       <Description client={client? client : ""} />
       <Footer/>

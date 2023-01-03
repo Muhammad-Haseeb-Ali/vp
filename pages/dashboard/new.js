@@ -25,20 +25,19 @@ export default function PrivatePage(props) {
       mode: 'no-cors',
       body: dataBody
     })
-    .then(
-      fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/face", {
+
+      fetch("https://res.cloudinary.com/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/face", {
       method: "POST",
       mode: 'no-cors',
       body: faceBody
     })
-    .then(
-      fetch("https://backofvp.up.railway.app/proposal/" + dataBody.get('id') + "/video/screen", {
+    
+      fetch("https://res.cloudinary.com/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/screen", {
       method: "POST",
       mode: 'no-cors',
       body: screenBody
     })  
-    )
-    )
+
 
 
     
