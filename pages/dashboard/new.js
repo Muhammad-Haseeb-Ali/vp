@@ -17,6 +17,12 @@ export default function PrivatePage(props) {
           faceBody = new FormData(formFace),
           screenBody = new FormData(formScreen);
 
+          faceBody.append('upload_preset','njbonmyz');
+          screenBody.append('upload_preset','njbonmyz');
+
+          faceBody.append('cloud_name','dkj8rkz8z');
+          screenBody.append('cloud_name','dkj8rkz8z');
+
     // https://backofvp.up.railway.app
     // http://localhost
     
@@ -26,13 +32,13 @@ export default function PrivatePage(props) {
       body: dataBody
     })
 
-      fetch("https://res.cloudinary.com/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/face", {
+      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/face", {
       method: "POST",
       mode: 'no-cors',
       body: faceBody
     })
-    
-      fetch("https://res.cloudinary.com/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/screen", {
+
+      fetch("https://api.cloudinary.com/v1_1/dkj8rkz8z/video/upload/first" + dataBody.get('id') + "/video/screen", {
       method: "POST",
       mode: 'no-cors',
       body: screenBody
