@@ -36,13 +36,13 @@ export default function PrivatePage(props) {
         <br/>  
         <input type="text" name="id" id="id"/>
         <br/>
-        <label for="face">Face:* </label>
+        <label for="faceLink">Face:* </label>
         <br/>  
-        <input type="text" name="face" id="face"/>
+        <input type="text" name="faceLink" id="face"/>
         <br/>
-        <label for="screen">Screen:* </label>
+        <label for="screenLink">Screen:* </label>
         <br/>  
-        <input type="text" name="screen" id="screen"/>
+        <input type="text" name="screenLink" id="screen"/>
         <br/>
         <label for="discription">Discription:* </label>
         <br/>  
