@@ -16,7 +16,7 @@ export default function PrivatePage(props) {
     // https://backofvp.up.railway.app
     // http://localhost
     
-      fetch("https://backofvp.up.railway.app/" + body.get('id'), {
+      fetch("https://backofvp.up.railway.app/proposal/" + body.get('id'), {
       method: "POST",
       mode: 'no-cors',
       body
