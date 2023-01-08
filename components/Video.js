@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "../styles/Streamvideo.module.css";
 import LoadStream from './LoadStream'
 
-export default function StreamVideo({ faceLink, screenLink }) {
+export default function StreamVideo({ faceLink, screenLink, pre }) {
   useEffect(() => {
     if (document) chokedar();
   }, []);
@@ -133,7 +133,7 @@ export default function StreamVideo({ faceLink, screenLink }) {
   }
 
     return (
-      <section className={styles.stream_sec}>
+      <section className={styles.stream_sec} id={pre||""}>
         {/* <div className={styles.thumnail}>
 
       </div> */}
@@ -146,7 +146,7 @@ export default function StreamVideo({ faceLink, screenLink }) {
           poster="/thumnail2.png"
           muted
         />
-        <div className={styles.face_container}>
+        <div className={styles.face_container} id={pre? "face": ""}>
           <video
             src={faceLink}
             width="800px"
