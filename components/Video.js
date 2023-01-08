@@ -4,73 +4,10 @@ import axios from "axios";
 import styles from "../styles/Streamvideo.module.css";
 import LoadStream from './LoadStream'
 
-export default function StreamVideo() {
-  const router = useRouter(),
-        { id } = router.query
+export default function StreamVideo({ faceLink, screenLink }) {
   useEffect(() => {
-    if (document && id != undefined) {
-      // const faceMediaSource = new MediaSource();
-      // const screenMediaSource = new MediaSource();
-
-      // const faceurl = URL.createObjectURL(faceMediaSource);
-      // const screenurl = URL.createObjectURL(screenMediaSource);
-
-      // const face = document.getElementById("face_video");
-      // const screen = document.getElementById("screen_video");
-
-      // face.src = faceurl;
-      // screen.src = screenurl;
-
-      // faceMediaSource.addEventListener('sourceopen', function(){
-      // const sourceBufferForScreen = screenMediaSource.addSourceBuffer(
-      //   'video/mp4; codecs="avc1.64001e"'
-      // );
-
-      // axios.get(`api/video`,{
-      //   params:{
-      //     id,type:"screen"
-      //   },
-      //   headers:{
-      //     "Content-Type": "video/mp4"
-      //   }
-      // })
-      // .then(function (response) {
-      //   // The data has to be a JavaScript ArrayBuffer
-      //   return response.arrayBuffer();
-      // })
-      // .then(function (audioData) {
-      //   sourceBufferForScreen.appendBuffer(audioData);
-      // })
-      // .catch(err=>console.error(err))
-      // })
-
-
-      // screenMediaSource.addEventListener('sourceopen', function(){
-      //   const sourceBufferForFace = faceMediaSource.addSourceBuffer(
-      //     'video/mp4; codecs="avc1.64001e"'
-      //   );
-
-      //   axios.get(`api/video`,{
-      //     params:{
-      //       id,type:"face"
-      //     },
-      //     headers:{
-      //       "Content-Type": "video/mp4"
-      //     }
-      //   })
-      //   .then(function (response) {
-      //     // The data has to be a JavaScript ArrayBuffer
-      //     return response.arrayBuffer();
-      //   })
-      //   .then(function (audioData) {
-      //     sourceBufferForFace.appendBuffer(audioData);
-      //   })
-      //   .catch(err=>console.error(err))
-      //   })
-
-      chokedar();
-    }
-  }, [id]);
+    if (document) chokedar();
+  }, []);
 
   function chokedar() {
     const interval = setInterval(() => {
@@ -83,6 +20,8 @@ export default function StreamVideo() {
       const timer = document.getElementById("video_time");
       const tracker = document.getElementById("video_meter");
       const button = document.getElementById("play_pause");
+
+      console.warn(face.currentTime, screen.currentTime)
 
       if (difference(face.currentTime, screen.currentTime) > 1) {
         if (face.currentTime < screen.currentTime) {
@@ -108,11 +47,9 @@ export default function StreamVideo() {
           ),
           totalMinutes = Math.floor(face.duration / 60),
           totalSeconds = Math.floor((face.duration / 60 - totalMinutes) * 60);
-        timer.innerText = `${
-          currentMinutes <= 9 ? `0${currentMinutes}` : currentMinutes
-        }:${currentSeconds <= 9 ? `0${currentSeconds}` : currentSeconds} / ${
-          totalMinutes <= 9 ? `0${totalMinutes}` : totalMinutes
-        }:${totalSeconds <= 9 ? `0${totalSeconds}` : totalSeconds}`;
+        timer.innerText = `${currentMinutes <= 9 ? `0${currentMinutes}` : currentMinutes
+          }:${currentSeconds <= 9 ? `0${currentSeconds}` : currentSeconds} / ${totalMinutes <= 9 ? `0${totalMinutes}` : totalMinutes
+          }:${totalSeconds <= 9 ? `0${totalSeconds}` : totalSeconds}`;
       } else {
         var currentMinutes = Math.floor(screen.currentTime / 60),
           currentSeconds = Math.floor(
@@ -120,11 +57,9 @@ export default function StreamVideo() {
           ),
           totalMinutes = Math.floor(screen.duration / 60),
           totalSeconds = Math.floor((screen.duration / 60 - totalMinutes) * 60);
-        timer.innerText = `${
-          currentMinutes <= 9 ? `0${currentMinutes}` : currentMinutes
-        }:${currentSeconds <= 9 ? `0${currentSeconds}` : currentSeconds} / ${
-          totalMinutes <= 9 ? `0${totalMinutes}` : totalMinutes
-        }:${totalSeconds <= 9 ? `0${totalSeconds}` : totalSeconds}`;
+        timer.innerText = `${currentMinutes <= 9 ? `0${currentMinutes}` : currentMinutes
+          }:${currentSeconds <= 9 ? `0${currentSeconds}` : currentSeconds} / ${totalMinutes <= 9 ? `0${totalMinutes}` : totalMinutes
+          }:${totalSeconds <= 9 ? `0${totalSeconds}` : totalSeconds}`;
       }
 
       if (face.paused == false || screen.paused == false) {
@@ -161,11 +96,10 @@ export default function StreamVideo() {
       face.pause();
       screen.pause();
     }
-    button.innerHTML = `<img src="/${
-      (face.paused || face.ended) && (screen.paused || screen.ended)
+    button.innerHTML = `<img src="/${(face.paused || face.ended) && (screen.paused || screen.ended)
         ? "play"
         : "pause"
-    }.png" />`;
+      }.png" />`;
   }
   function muteUnmute() {
     const face = document.getElementById("face_video");
@@ -195,62 +129,58 @@ export default function StreamVideo() {
 
     face.currentTime = (face.duration * e) / 100;
     screen.currentTime = (screen.duration * e) / 100;
+
   }
 
-  if(router.isReady){
-      return (
-    <section className={styles.stream_sec}>
-      {/* <div className={styles.thumnail}>
+    return (
+      <section className={styles.stream_sec}>
+        {/* <div className={styles.thumnail}>
 
       </div> */}
-      <video
-        src={`https://backofvp.up.railway.app/proposal/${id}/video/screen`}
-        width="800px"
-        height="auto"
-        className={styles.screen_video}
-        id="screen_video"
-        poster="/thumnail2.png"
-        muted
-      />
-      <div className={styles.face_container}>
         <video
-          src={`https://backofvp.up.railway.app/proposal/${id}/video/face`}
+          src={screenLink}
           width="800px"
           height="auto"
-          id="face_video"
-          className={styles.face_video}
-          poster="/me.png"
+          className={styles.screen_video}
+          id="screen_video"
+          poster="/thumnail2.png"
           muted
         />
-      </div>
-      <section className={styles.controls_sec}>
-        <button id="play_pause" onClick={playPause}>
-          <img src="/play.png" />
-        </button>
-        <button id="mute_unmute" onClick={muteUnmute}>
-          <img src="/muted.png" />
-        </button>
-        <input
-          type="range"
-          onClick={(e) => setVol(e.target.value)}
-          id="vol_meter"
-          className={styles.vol_meter}
-          defaultValue="0"
-          firstClicked="false"
-        />
-        <input
-          type="range"
-          id="video_meter"
-          onClick={(e) => setVed(e.target.value)}
-          className={styles.video_meter}
-          defaultValue="0"
-        />
-        <p id="video_time"></p>
+        <div className={styles.face_container}>
+          <video
+            src={faceLink}
+            width="800px"
+            height="auto"
+            id="face_video"
+            className={styles.face_video}
+            poster="/me.png"
+            muted
+          />
+        </div>
+        <section className={styles.controls_sec}>
+          <button id="play_pause" onClick={playPause}>
+            <img src="/play.png" />
+          </button>
+          <button id="mute_unmute" onClick={muteUnmute}>
+            <img src="/muted.png" />
+          </button>
+          <input
+            type="range"
+            onClick={(e) => setVol(e.target.value)}
+            id="vol_meter"
+            className={styles.vol_meter}
+            defaultValue="0"
+            firstClicked="false"
+          />
+          <input
+            type="range"
+            id="video_meter"
+            onClick={(e) => setVed(e.target.value)}
+            className={styles.video_meter}
+            defaultValue="0"
+          />
+          <p id="video_time"></p>
+        </section>
       </section>
-    </section>
-  );
-  }
-  else{
-    return <LoadStream/>
-  }
+    );
 }

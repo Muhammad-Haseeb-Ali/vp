@@ -1,10 +1,10 @@
 import styles from "../styles/Description.module.css"
 
-export default function Description({client}){
+export default function Description({client, discription}){
     return(
         <section className={styles.description_sec}>
             <br/>
-            Hello, {client.length>0 && client[0].toUpperCase() + client.substring(1)}
+            Hello, {client.length>0 && client}
             <br/>
             <br/>
             My name is Muhammad Haseeb Ali. I&apos;m from Punjab Pakistan. I am doing Bachelor&apos;s in Data Science and freelancing as a Front End Web Developer.
