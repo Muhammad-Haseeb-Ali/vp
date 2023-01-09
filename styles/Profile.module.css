@@ -43,3 +43,23 @@
     width: 20px;
     margin: 0 10px;
 }
+
+@media only screen and (max-width: 750px){
+    .pro_sec>ul>li{
+        font-size: small;
+    }
+}
+@media only screen and (max-width: 680px){
+    .pro_sec{
+        flex-flow: column;
+    }
+    .pro_sec>ul{
+        margin-right: 0;
+        margin-top: 10px 0;
+    }
+}
+@media only screen and (max-width: 430px){
+    .pro_sec>ul>li>p{
+        display: none;
+    }
+}
