@@ -1,4 +1,5 @@
 .pro_sec{
+    position: relative;
     width: calc(100% - 60px);
     margin: 30px;
     padding: 10px;
@@ -59,7 +60,21 @@
     }
 }
 @media only screen and (max-width: 430px){
+    .pro_sec>ul{
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%,50%);
+        background-color: #008a59;
+        border: 3px solid #fff;
+        border-radius: 20px;
+        padding: 5px 0;
+    }
     .pro_sec>ul>li>p{
         display: none;
+    }
+    .pro_sec>ul>li>img{
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
     }
 }
