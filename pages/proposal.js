@@ -40,7 +40,7 @@ export default function Proposal(props) {
           </Head>
           <Navbar />
           <StreamVideo faceLink={MD.proposal.faceLink} screenLink={MD.proposal.screenLink} />
-          <Reaction />
+          <Reaction client={MD.proposal.client} />
           <Description client={MD.proposal.client || ""} discription={MD.proposal.discription} />
           <Footer />
         </>

@@ -24,14 +24,21 @@
     line-height: 22px;
     font-size: 15px;
 }
-.footer_sec>button{
-    background-color: #002a1c;
-    color: #fff;
+.footer_sec button{
     border-radius: 20px;
     border: none;
     margin-bottom: 30px;
     padding: 10px 20px;
     cursor: pointer;
+}
+.footer_sec button:first-child{
+    background-color: #b3f5df;
+    margin-right: 3px;
+}
+.footer_sec button:last-child{
+    background-color: #002a1c;
+    color: #fff;
+    margin-left: 3px;
 }
 .footer_sec>p{
     width: 100%;
