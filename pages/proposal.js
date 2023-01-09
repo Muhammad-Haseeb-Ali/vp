@@ -45,7 +45,7 @@ export default function Proposal(props) {
           <Footer />
         </>
         :
-        <h1>Proposal not found</h1>
+        <></>
       :
       <h1>loading</h1>
   )
