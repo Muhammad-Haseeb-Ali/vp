@@ -105,3 +105,12 @@ transition: all 0.5s ease-in;
 .stream_sec:hover > .face_container{
     bottom: 80px;
 }
+
+@media only screen and (max-width: 500px){
+    .controls_sec>p{
+        display: none;
+    }
+    .video_meter{
+        width: calc(100% - 210px);
+    }
+}
