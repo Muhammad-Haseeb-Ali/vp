@@ -11,47 +11,43 @@ import LoadStream from '../components/LoadStream'
 
 export default function Proposal(props) {
   const router = useRouter()
-  const {id} = router.query
-  const [MD, setMD] = useState(null)
+  const { id } = router.query
+  const [MD, setMD] = useState({})
 
-  useEffect(()=>{
-    async function MDfunc (){
-    const proposal = await fetch("https://backofvp.up.railway.app/proposal/" + id)
-    .then(res=>res.json())
-    .then(data => data)
-    .catch(err => err)
-    setMD(proposal)
-    console.warn(id, proposal)
-    }
-    id && MDfunc()
-  },[id])
+  useEffect(() => {
+    const url = "https://backofvp.up.railway.app/proposal/" + id;
 
-      if(MD != null)
-      return(<>
-      <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      {
-        (props.err) ?
-          <h1>error: {props.err}</h1> :
-          <>
-            <Head>
-            <title>For {MD.proposal.client !== "" ? MD.proposal.client : "you"}</title>
-            </Head>
-            <Navbar />
-            <StreamVideo faceLink={MD.proposal.faceLink} screenLink={MD.proposal.screenLink} />
-            <Reaction />
-            <Description client={MD.proposal.client || ""} discription={MD.proposal.discription} />
-            <Footer />
-          </>
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        setMD(json)
+      } catch (error) {
+        console.error("error", error);
       }
-    </>)
-    else(<h1>Loading</h1>)
-}
+    };
 
+    fetchData()
+      .then(() => console.warn("matadata", MD))
+  }, [id]);
 
-export const getStaticProps = async (cont) => {
-  return {
-    props: {  }
-  }
+  return (
+    (MD != null) ?
+      MD.proposal ?
+        <>
+          <Head>
+            <title>For {MD.proposal.client !== "" ? MD.proposal.client : "you"}</title>
+          </Head>
+          <Navbar />
+          <StreamVideo faceLink={MD.proposal.faceLink} screenLink={MD.proposal.screenLink} />
+          <Reaction />
+          <Description client={MD.proposal.client || ""} discription={MD.proposal.discription} />
+          <Footer />
+        </>
+        :
+        <h1>Proposal not found</h1>
+      :
+      <h1>loading</h1>
+  )
+
 }
