@@ -70,9 +70,13 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
   }
 
   function firstStart() {
+    const screen = document.getElementById("screen_video");
     const face = document.getElementById("face_video");
     const meter = document.getElementById("vol_meter");
     const button = document.getElementById("mute_unmute");
+    const hero_banner = document.getElementById("hero_banner")
+          hero_banner.style.display = "none"
+          screen.style.display = "block"
     if (meter.getAttribute("firstClicked") == "false") {
       meter.setAttribute("firstClicked", "true");
       meter.value = 10;
@@ -134,16 +138,16 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
 
     return (
       <section className={styles.stream_sec} id={pre||""}>
-        {/* <div className={styles.thumnail}>
+        <div className={styles.thumnail} id="hero_banner">
 
-      </div> */}
+      </div>
         <video
           src={screenLink}
           width="800px"
           height="auto"
           className={styles.screen_video}
           id="screen_video"
-          poster="/thumnail2.png"
+          onClick={playPause}
           muted
         />
         <div className={styles.face_container} id={pre? "face": ""}>
@@ -153,7 +157,8 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
             height="auto"
             id="face_video"
             className={styles.face_video}
-            poster="/me.png"
+            poster="/firstplay.png"
+            onClick={playPause}
             muted
           />
         </div>

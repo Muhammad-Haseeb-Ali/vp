@@ -8,6 +8,7 @@ import Reaction from '../components/Reaction'
 import { useEffect, useState } from 'react'
 import Notfound from '../components/Notfound'
 import LoadStream from '../components/LoadStream'
+import Profile from '../components/Profile'
 
 export default function Proposal(props) {
   const router = useRouter()
@@ -41,6 +42,7 @@ export default function Proposal(props) {
           <Navbar />
           <StreamVideo faceLink={MD.proposal.faceLink} screenLink={MD.proposal.screenLink} />
           <Reaction client={MD.proposal.client} />
+          <Profile/>
           <Description client={MD.proposal.client || ""} discription={MD.proposal.discription} />
           <Footer />
         </>

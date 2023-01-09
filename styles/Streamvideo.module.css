@@ -8,7 +8,6 @@
 .thumnail{
     width: 100%;
     height: 100%;
-    z-index: 1;
     background-color: #008a59;
 }
 .screen_video{
@@ -17,6 +16,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     height: 110%;
+    display: none;
 }
 .face_container{
     position: absolute;
@@ -27,6 +27,7 @@
     overflow: hidden;
     border-radius: 100px;
     background-color: black;
+    cursor: pointer;
     /* Firefox */
     -moz-transition: all 0.5s ease-in;
     /* WebKit */
