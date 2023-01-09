@@ -138,9 +138,9 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
 
     return (
       <section className={styles.stream_sec} id={pre||""}>
-        <div className={styles.thumnail} id="hero_banner">
+        {/* <div className={styles.thumnail} id="hero_banner">
 
-      </div>
+      </div> */}
         <video
           src={screenLink}
           width="800px"
