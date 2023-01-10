@@ -157,7 +157,7 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
             height="auto"
             id="face_video"
             className={styles.face_video}
-            poster="/firstplay.png"
+            // poster="/firstplay.png"
             onClick={playPause}
             muted
           />
