@@ -74,8 +74,8 @@ export default function StreamVideo({ faceLink, screenLink, pre }) {
     const face = document.getElementById("face_video");
     const meter = document.getElementById("vol_meter");
     const button = document.getElementById("mute_unmute");
-    const hero_banner = document.getElementById("hero_banner")
-          hero_banner.style.display = "none"
+    // const hero_banner = document.getElementById("hero_banner")
+    //       hero_banner.style.display = "none"
           screen.style.display = "block"
     if (meter.getAttribute("firstClicked") == "false") {
       meter.setAttribute("firstClicked", "true");
