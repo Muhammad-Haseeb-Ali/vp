@@ -23,6 +23,12 @@ export default function Proposal(props) {
         const response = await fetch(url);
         const json = await response.json();
         setMD(json)
+
+        const mail=`👍 Congratulation "\n\n
+        Your Video Proposal with id: ${id} have been watch by the your client \n\n\n
+        Check out your Proposal here: https://videoproposal.vercel.app/proposal?id=${id} `
+
+        fetch(`api/sendmail?id=${id}&msg=${mail}`,{method:"GET",mode: 'no-cors'})
       } catch (error) {
         console.error("error", error);
       }
