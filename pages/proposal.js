@@ -28,7 +28,7 @@ export default function Proposal(props) {
         Your Video Proposal with id: ${id} have been watch by the your client \n\n\n
         Check out your Proposal here: https://videoproposal.vercel.app/proposal?id=${id} `
 
-        fetch(`api/sendmail?id=${id}&msg=${mail}`,{method:"GET",mode: 'no-cors'})
+        fetch(`https://backofvp.up.railway.app/sendmail?id=${id}&msg=${mail}`,{method:"GET",mode: 'no-cors'})
       } catch (error) {
         console.error("error", error);
       }
