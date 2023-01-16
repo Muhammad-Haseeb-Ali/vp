@@ -19,6 +19,8 @@ export default function Proposal(props) {
     const url = "https://backofvp.up.railway.app/proposal/" + id;
 
     const fetchData = async () => {
+      if(id!=undefined)
+      {
       try {
         const response = await fetch(url);
         const json = await response.json();
@@ -31,7 +33,9 @@ export default function Proposal(props) {
         fetch(`https://backofvp.up.railway.app/sendmail?id=${id}&msg=${mail}`,{method:"GET",mode: 'no-cors'})
       } catch (error) {
         console.error("error", error);
+      }        
       }
+
     };
 
     fetchData()
