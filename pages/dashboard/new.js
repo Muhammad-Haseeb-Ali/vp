@@ -11,11 +11,13 @@ import Discription from "../../components/Description"
 
 export default function PrivatePage(props) {
   const editorRef = useRef(null);
+  const[link,putLink] = useState("")
   const [form, setupForm] = useState({})
   const [stage, changeStage] = useState(1)
 
   function formHandler(){
     var formData = form
+    console.warn(document.forms)
     switch(stage){
       case 1:
         formData.client = document.forms[0][0].value
@@ -28,8 +30,7 @@ export default function PrivatePage(props) {
         setupForm(formData)
         break
       case 3:
-        formData.screenLink = document.forms[2][0].value
-        formData.faceLink = document.forms[2][1].value
+        formData.videoLink = link
         setupForm(formData)
         break
       case 4:
@@ -92,10 +93,9 @@ export default function PrivatePage(props) {
           />
         </form>
         <form id="form3" active={stage == 3 && 'active_form'}>
-          {/* <Video pre="VinF" /> */}
-          <label>Linked Videos:</label>
-          <input type="text" for="screenLink" placeholder="Background Screen Footage" />
-          <input type="text" for="faceLink" placeholder="Your Face Footage" />
+          <Video videoLink={link} />
+          <label>Linked Video:</label>
+          <input onChange={e=>putLink(e.target.value)} type="text" for="videoLink" placeholder="Video url" />
         </form>
         <form id="form4" active={stage == 4 && 'active_form'}>
           <h1>UPLOAD YOUR PROPOSAL</h1>

@@ -46,7 +46,7 @@ export default function Proposal(props) {
             <title>For {MD.proposal.client !== "" ? MD.proposal.client : "you"}</title>
           </Head>
           <Navbar />
-          <StreamVideo faceLink={MD.proposal.faceLink} screenLink={MD.proposal.screenLink} />
+          <StreamVideo videoLink={MD.proposal.screenLink} />
           <Reaction client={MD.proposal.client} />
           <Profile/>
           <Description client={MD.proposal.client || ""} discription={MD.proposal.discription} />
